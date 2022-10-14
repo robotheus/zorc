@@ -3,9 +3,9 @@
 
 FILE *fileInput, *fileOutput;
 
-void open_file(){
-    fileInput = fopen("entrada.txt", "r");
-    fileOutput = fopen("saida.txt", "w");
+void open_file(char argv1[], char argv2[]){
+    fileInput = fopen(argv1, "r");
+    fileOutput = fopen(argv2, "w");
 
     if(fileInput == NULL) printf("ERRO AO ABRIR O ARQUIVO.\n");
 }

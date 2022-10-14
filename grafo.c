@@ -4,9 +4,7 @@
 #include "grafo.h"
 
 void grafo(int **matriz){
-    open_file();
-
-    int instances, povos, distancia, peso, caminhos, pi, pj;
+    int instances, povos, distancia, peso, caminhos, povoi, povoj;
     instances = read_file();
     
     for(int k = 0; k < instances; k++){
@@ -41,10 +39,10 @@ void grafo(int **matriz){
     
         //adiciona as arestas na matriz adjunta
         for(int n = 0; n < caminhos; n++){
-            pi = read_file();
-            pj = read_file();
+            povoi = read_file();
+            povoj = read_file();
 
-            *(*(matriz + (pi - 1)) + (pj - 1)) = read_file();      
+            *(*(matriz + (povoi - 1)) + (povoj - 1)) = read_file();      
         }
 
         for(int p = 0; p < povos; p++){
