@@ -16,4 +16,4 @@ tp2: main.o file.o estrutura.o heuristica.o
 	gcc main.o file.o estrutura.o heuristica.o -o tp2
 
 clean: 
-	rm -rf main.o file.o estrutura.o heuristica.h saida.txt tp2
+	rm -rf main.o file.o estrutura.o heuristica.o saida.txt tp2
