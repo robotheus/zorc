@@ -25,7 +25,7 @@ void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos)
             (*(solucao + i)).id = atual.id;
             (*(solucao + i)).selecionados = selecionados;
             i++;
-        } else if(tem_caminho(matriz, atual.id, anterior) == 1){
+        } else if(tem_caminho(matriz, atual.id, anterior) == 1 && distancia >= (*(*(matriz + (atual.id - 1)) + anterior - 1)) && peso >= atual.peso){
             distancia -= *(*(matriz + (atual.id - 1)) + (anterior - 1));            
             selecionados = (peso / atual.peso);
             peso -= (selecionados * atual.peso);
