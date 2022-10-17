@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include "estrutura.h"
 #include "heuristica.h"
+#include "file.h"
 
 void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos){
-    int anterior = -2, habilidade, selecionados;
+    int anterior = -2, habilidade, selecionados, i = 0;
+    Solucao solucao[qtdpovos];
     Povo atual;
     
     ordena_povos(povo, qtdpovos);
@@ -18,14 +20,28 @@ void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos)
             habilidade = selecionados * atual.habilidade;
             anterior = atual.id;
             qtdpovos--;
+            
+            solucao[i].id = atual.id;
+            solucao[i].selecionados = selecionados;
+            i++;
         } else if(tem_caminho(matriz, atual.id, anterior) == 1){
             selecionados = peso/atual.peso;
             peso -= (selecionados * atual.peso);
             habilidade += (selecionados * atual.habilidade);
             anterior = atual.id;
             qtdpovos--;
+            
+            solucao[i].id = atual.id;
+            solucao[i].selecionados = selecionados;
+            i++;
         } else qtdpovos--;
     }
+
+    output1(habilidade);
+    for(int k = 0; k < i; k++){
+        output2(solucao[k].id, solucao[k].selecionados);
+    }
+    output3();
 }
 
 void ordena_povos(Povo *povo, int qtdpovos){

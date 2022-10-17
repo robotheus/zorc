@@ -21,7 +21,14 @@ void close_file(){
     fclose(fileOutput);
 }
 
-void output(int output){
-    int write = output;
-    fprintf(fileOutput, "%d\n", write);
+void output1(int habilidade){
+    fprintf(fileOutput, "%d ", habilidade);
+}
+
+void output2(int vertice, int selecionados){
+    fprintf(fileOutput, "%d %d ", vertice, selecionados);
+}
+
+void output3(){
+    fprintf(fileOutput, "\n");
 }
