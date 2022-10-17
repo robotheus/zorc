@@ -73,31 +73,3 @@ int tem_caminho(int **matriz, int v1, int v2){
     if(*(*(matriz + (v1 - 1)) + (v2 - 1)) != -1 || *(*(matriz + (v2 - 1)) + (v1 - 1)) != -1) return 1;
     else return 0;
 }
-
-int menor_distancia(int **matriz, int qtdpovos){
-    int menor = *(*(matriz + 0) + 0);
-    
-    for(int i = 0; i < qtdpovos; i++){
-        for(int j = 0; j < qtdpovos; j++){
-            if(*(*(matriz + i) + j) != -1 && *(*(matriz + i) + j) < menor){
-                menor = *(*(matriz + i) + j);
-            };
-        }
-    }
-    printf("menor: %d\n\n", menor);
-    return menor;
-}
-
-int menor_peso(Povo *povo, int qtdpovos){
-    int menor = (*(povo + 0)).peso;
-
-    for(int i = 0; i < qtdpovos; i++){
-        if((*(povo + i)).peso < menor){
-            menor = (*(povo + i)).peso;
-        }
-    }
-   
-    printf("menor: %d\n\n", menor);
-    return menor;
-}
-
