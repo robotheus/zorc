@@ -31,8 +31,9 @@ void monta_estrutura(int **matriz, Povo *povo, int qtdpovos, int caminhos){
         povoi = read_file();
         povoj = read_file();
 
-        *(*(matriz + (povoi - 1)) + (povoj - 1)) = read_file();      
-    }    
+        *(*(matriz + (povoi - 1)) + (povoj - 1)) = read_file();  
+        *(*(matriz + (povoj - 1)) + (povoi - 1)) = *(*(matriz + (povoi - 1)) + (povoj - 1));    
+    }
 }
 
 void limpa_estrutura(int qtdpovos, int **matriz, Povo *povos, Povo *copia_povos){
