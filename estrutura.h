@@ -3,6 +3,7 @@ struct povo {
     int id;
     int peso;
     int habilidade;
+    double razao; //quanto menor maior a prioridade para esse vertice
 };
 
 typedef struct povo Povo;

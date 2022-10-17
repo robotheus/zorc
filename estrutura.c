@@ -11,6 +11,7 @@ void monta_estrutura(int **matriz, Povo *povo, int qtdpovos, int caminhos){
         (*(povo + i)).id = read_file();
         (*(povo + i)).peso = read_file();
         (*(povo + i)).habilidade = read_file();
+        (*(povo + i)).razao = (double)((*(povo + i)).peso) / ((*(povo + i)).habilidade);
     }
 
     //aloca a matriz adjacencia
@@ -48,4 +49,14 @@ void copia_estrutura(Povo *primeiro, Povo *segundo, int qtdepovos){
     for(int i = 0; i < qtdepovos; i++){
         *(primeiro + i) = *(segundo + i);
     }
+
+    for (int l = 0; l < qtdepovos; l++){
+        printf("%d %d %d %lf\n", (*(primeiro + l)).id, (*(primeiro + l)).peso, (*(primeiro + l)).habilidade, (*(primeiro + l)).razao);
+    }
+    printf("\n");
+
+    for (int l = 0; l < qtdepovos; l++){
+        printf("%d %d %d %lf\n", (*(segundo + l)).id, (*(segundo + l)).peso, (*(segundo + l)).habilidade, (*(segundo + l)).razao);
+    }
+    printf("\n");
 }
