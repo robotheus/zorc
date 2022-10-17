@@ -32,7 +32,7 @@ void monta_estrutura(int **matriz, Povo *povo, int qtdpovos, int caminhos){
         povoj = read_file();
 
         *(*(matriz + (povoi - 1)) + (povoj - 1)) = read_file();      
-    }
+    }    
 }
 
 void limpa_estrutura(int qtdpovos, int **matriz, Povo *povos, Povo *copia_povos){
@@ -45,18 +45,16 @@ void limpa_estrutura(int qtdpovos, int **matriz, Povo *povos, Povo *copia_povos)
     free(copia_povos);  
 }
 
-void copia_estrutura(Povo *primeiro, Povo *segundo, int qtdepovos){
+void copia_povos(Povo *primeiro, Povo *segundo, int qtdepovos){
     for(int i = 0; i < qtdepovos; i++){
         *(primeiro + i) = *(segundo + i);
     }
+}
 
-    for (int l = 0; l < qtdepovos; l++){
-        printf("%d %d %d %lf\n", (*(primeiro + l)).id, (*(primeiro + l)).peso, (*(primeiro + l)).habilidade, (*(primeiro + l)).razao);
+void copia_caminhos(int **primeiro, int **segundo, int qtdepovos){
+    for(int i = 0; i < qtdepovos; i++){
+        for(int j = 0; j < qtdepovos; j++){
+            *(*(primeiro + i) + j) = *(*(segundo + i) + j);
+        }
     }
-    printf("\n");
-
-    for (int l = 0; l < qtdepovos; l++){
-        printf("%d %d %d %lf\n", (*(segundo + l)).id, (*(segundo + l)).peso, (*(segundo + l)).habilidade, (*(segundo + l)).razao);
-    }
-    printf("\n");
 }

@@ -10,4 +10,5 @@ typedef struct povo Povo;
 
 void monta_estrutura(int **, Povo *, int, int);
 void limpa_estrutura(int, int **, Povo *, Povo *);
-void copia_estrutura(Povo *, Povo *, int);
+void copia_povos(Povo *, Povo *, int);
+void copia_caminhos(int **, int **, int);
