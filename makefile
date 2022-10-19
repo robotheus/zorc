@@ -9,11 +9,14 @@ estrutura.o: estrutura.h estrutura.c
 heuristica.o: heuristica.h heuristica.c
 	gcc -c heuristica.c
 
+dinamica.o: dinamica.h dinamica.c
+	gcc -c dinamica.c
+
 main.o: main.c	
 	gcc -c main.c
 
-tp2: main.o file.o estrutura.o heuristica.o
+tp2: main.o file.o estrutura.o heuristica.o dinamica.o
 	gcc main.o file.o estrutura.o heuristica.o -o tp2
 
 clean: 
-	rm -rf main.o file.o estrutura.o heuristica.o saida.txt tp2
+	rm -rf main.o file.o estrutura.o heuristica.o dinamica.o saida.txt tp2

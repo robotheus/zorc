@@ -1,0 +1,1 @@
+void dinamica(int **, Povo, int, int, int, int);

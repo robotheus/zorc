@@ -24,9 +24,6 @@ void main(int argc, char *argv[]){
         copia_povos(copia_p, povos, qtdpovos);
         heuristica(copia_p, matriz, peso, distancia, qtdpovos);
         limpa_estrutura(qtdpovos, matriz, povos, copia_p);
-        
-        
-
     }
 
     close_file();
