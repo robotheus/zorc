@@ -6,8 +6,8 @@
 
 void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos){
     int anterior = -2, habilidade, selecionados, i = 0;
-    Solucao *solucao;
-    solucao = malloc(qtdpovos * sizeof(Solucao));
+    Solucao_h *solucao;
+    solucao = malloc(qtdpovos * sizeof(Solucao_h));
     Povo atual;
 
     ordena_povos(povo, qtdpovos);
