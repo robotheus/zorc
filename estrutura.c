@@ -19,7 +19,7 @@ void monta_estrutura(int **matriz, Povo *povo, int qtdpovos, int caminhos){
         *(matriz + l) = (int*) malloc(qtdpovos * sizeof(int*));
     }
 
-    //preenche a matriz de adjacencia com distancia nao utilizada
+    //preenche a matriz de adjacencia com uma distancia nao utilizada
     for(int m = 0; m < qtdpovos; m++){
         for(int j = 0; j < qtdpovos; j++){
             *(*(matriz + m) + j) = -1;
@@ -58,4 +58,32 @@ void copia_caminhos(int **primeiro, int **segundo, int qtdepovos){
             *(*(primeiro + i) + j) = *(*(segundo + i) + j);
         }
     }
+}
+
+//ordena os povos da maior razao entre peso e habilidade para a menor
+void ordena_povos(Povo *povo, int qtdpovos){
+    Povo povo_aux;
+    int max;
+    
+    for(int i = 0; i < (qtdpovos - 1); i++){
+        max = i;
+        
+        for(int j = (i + 1); j < qtdpovos; j++){
+            if((*(povo + j)).razao > (*(povo + max)).razao){
+                max = j;
+            }
+        }
+        
+        if(i != max){
+            povo_aux = *(povo + i);
+            *(povo + i) = *(povo + max);
+            *(povo + max) = povo_aux;
+        }
+    }
+}
+
+//verifica se tem aresta entre dois vertices
+int tem_caminho(int **matriz, int v1, int v2){
+    if(*(*(matriz + (v1 - 1)) + (v2 - 1)) != -1 || *(*(matriz + (v2 - 1)) + (v1 - 1)) != -1) return 1;
+    else return 0;
 }

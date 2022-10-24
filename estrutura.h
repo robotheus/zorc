@@ -12,3 +12,5 @@ void monta_estrutura(int **, Povo *, int, int);
 void limpa_estrutura(int, int **, Povo *, Povo *);
 void copia_povos(Povo *, Povo *, int);
 void copia_caminhos(int **, int **, int);
+void ordena_povos(Povo *, int);
+int tem_caminho(int **, int, int);

@@ -6,8 +6,8 @@
 
 void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos){
     int anterior = -2, habilidade, selecionados, i = 0;
-    Solucao_h *solucao;
-    solucao = malloc(qtdpovos * sizeof(Solucao_h));
+    Solucao *solucao;
+    solucao = malloc(qtdpovos * sizeof(Solucao));
     Povo atual;
 
     ordena_povos(povo, qtdpovos);
@@ -40,36 +40,10 @@ void heuristica(Povo *povo, int **matriz, int peso, int distancia, int qtdpovos)
     }
 
     output1(habilidade);
-    for(int k = 0; k < i; k++){
+    for(int k = i-1; k >= 0; k--){
         output2((*(solucao + k)).id, (*(solucao + k)).selecionados);
     }
     output3();
 
     free(solucao);
-}
-
-void ordena_povos(Povo *povo, int qtdpovos){
-    Povo povo_aux;
-    int max;
-    
-    for(int i = 0; i < (qtdpovos - 1); i++){
-        max = i;
-        
-        for(int j = (i + 1); j < qtdpovos; j++){
-            if((*(povo + j)).razao > (*(povo + max)).razao){
-                max = j;
-            }
-        }
-        
-        if(i != max){
-            povo_aux = *(povo + i);
-            *(povo + i) = *(povo + max);
-            *(povo + max) = povo_aux;
-        }
-    }
-}
-
-int tem_caminho(int **matriz, int v1, int v2){
-    if(*(*(matriz + (v1 - 1)) + (v2 - 1)) != -1 || *(*(matriz + (v2 - 1)) + (v1 - 1)) != -1) return 1;
-    else return 0;
 }
