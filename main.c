@@ -3,6 +3,7 @@
 #include "file.h"
 #include "estrutura.h"
 #include "heuristica.h"
+#include "dinamica.h"
 
 void main(int argc, char *argv[]){
     open_file(argv[2], argv[4]);
@@ -22,7 +23,8 @@ void main(int argc, char *argv[]){
 
         monta_estrutura(matriz, povos, qtdpovos, qtdcaminhos);
         copia_povos(copia_p, povos, qtdpovos);
-        heuristica(copia_p, matriz, peso, distancia, qtdpovos);
+        dinamica(matriz, povos, qtdpovos, distancia, peso);
+        //heuristica(copia_p, matriz, peso, distancia, qtdpovos);
         limpa_estrutura(qtdpovos, matriz, povos, copia_p);
     }
 

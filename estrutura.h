@@ -1,8 +1,8 @@
 //os vertices sao os povos e as arestas sao as ligacoes entre os povos
 struct povo {
     int id;
-    int peso;
     int habilidade;
+    int peso;
     double razao; //quanto menor maior a prioridade para esse vertice
 };
 
@@ -14,3 +14,4 @@ void copia_povos(Povo *, Povo *, int);
 void copia_caminhos(int **, int **, int);
 void ordena_povos(Povo *, int);
 int tem_caminho(int **, int, int);
+void ordena_pesos(Povo *povo, int qtdpovos);

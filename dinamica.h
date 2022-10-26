@@ -1,10 +1,9 @@
-struct quatro_upla {
-    int peso_atual;
-    int habilidade_atual;
-    int distancia_atual;
-    int caminho_anterior;
+struct solucao {
+    int item;
+    struct solucao *next;
 };
 
-typedef struct quatro_upla Quatro_upla;
+typedef struct solucao Solucao;
 
 void dinamica(int **, Povo *, int, int, int);
+int max(Povo *povo, int **tabela, int i, int j);
