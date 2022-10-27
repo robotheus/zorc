@@ -82,27 +82,6 @@ void ordena_povos(Povo *povo, int qtdpovos){
     }
 }
 
-void ordena_pesos(Povo *povo, int qtdpovos){
-    Povo povo_aux;
-    int max;
-    
-    for(int i = 0; i < (qtdpovos - 1); i++){
-        max = i;
-        
-        for(int j = (i + 1); j < qtdpovos; j++){
-            if((*(povo + j)).peso < (*(povo + max)).peso){
-                max = j;
-            }
-        }
-        
-        if(i != max){
-            povo_aux = *(povo + i);
-            *(povo + i) = *(povo + max);
-            *(povo + max) = povo_aux;
-        }
-    }
-}
-
 //verifica se tem aresta entre dois vertices
 int tem_caminho(int **matriz, int v1, int v2){
     if(*(*(matriz + (v1 - 1)) + (v2 - 1)) != -1 || *(*(matriz + (v2 - 1)) + (v1 - 1)) != -1) return 1;
