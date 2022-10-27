@@ -2,40 +2,62 @@
 #include <stdlib.h>
 #include "estrutura.h"
 #include "dinamica.h"
+#include "file.h"
 
 void dinamica(int **matriz, Povo *povo, int qtdpovos, int distancia, int peso){
-    int *t;
-    Solucao **s;
-    Solucao *n;
+    int *tabela, aux_s, qtdsoldados = 0;
+    Solucao_dp **solucao;
+    Solucao_dp *aux;
 
-    t = (int *)malloc((peso+1)*(sizeof(int)));
-    s = (Solucao **)malloc((peso+1)*(sizeof(Solucao *)));
+    tabela = (int *) malloc((peso + 1) * (sizeof(int)));
+	solucao = (Solucao_dp **) malloc((peso + 1) * (sizeof(Solucao_dp *)));
 	
-    t[0]=0;
-    s[0]=NULL;
+    tabela[0] = 0;
+	solucao[0] = NULL;
     
     for(int x = 1; x <= peso; x++){
-	t[x] = 0;
-	s[x] = NULL;
+		tabela[x] = 0;
+		solucao[x] = NULL;
 		
-	for(int i = 0;i < qtdpovos; i++){
-	    if(povo[i].peso <= x){
-		if((t[x-povo[i].peso] + povo[i].habilidade) > t[x]){
-		    t[x] = t[x-povo[i].peso] + povo[i].habilidade;
-		    s[x] = s[x-povo[i].peso];
-		    n = (Solucao *)malloc(1 * (sizeof(Solucao)));
-		    n->item = i;
-		    n->next = s[x];
-		    s[x] = n;
-		}		
-	     }
-	  }
-      }
-    
-    printf("\nHabilidade total: %d.\nCaminho e quantidade de itens: ", t[peso]);
-    while(s[peso] != NULL){
-		printf("Item- %d\n", (s[peso]->item)+1);
-		s[peso] = s[peso]->next;
+		for(int i = 0; i < qtdpovos; i++){
+			if(povo[i].peso <= x){
+				if((tabela[x - povo[i].peso] + povo[i].habilidade) > tabela[x]){
+					tabela[x] = tabela[x - povo[i].peso] + povo[i].habilidade;
+					solucao[x] = solucao[x - povo[i].peso];
+					
+					aux = (Solucao_dp *) malloc(sizeof(Solucao_dp));
+					aux->item = i;
+					aux->next = solucao[x];
+					solucao[x] = aux;
+				}
+			}
+		}
 	}
-    printf("\n");
+    
+    printf("\nhabilidade maxima %d.\nCaminho: ", tabela[peso]);
+	aux_s = (solucao[peso]->item) + 1;
+	printf("%d ", (solucao[peso]->item) + 1);
+
+	while(solucao[peso] != NULL){	
+		qtdsoldados++;
+		
+		if(((solucao[peso]->item) + 1) != aux_s){
+			printf("%d ", qtdsoldados-1);
+			printf("%d ", (solucao[peso]->item) + 1);
+			aux_s = (solucao[peso]->item) + 1;
+			qtdsoldados = 1;
+		}
+
+		solucao[peso] = solucao[peso]->next;
+	}
+	
+	printf("%d", qtdsoldados);
+	printf("\n");
+
+	free(tabela);
+	free(aux);
+	
+	for(int j = 0; j <= peso; j++) {
+		free(solucao[j]);
+	}
 }

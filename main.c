@@ -24,7 +24,7 @@ void main(int argc, char *argv[]){
         monta_estrutura(matriz, povos, qtdpovos, qtdcaminhos);
         copia_povos(copia_p, povos, qtdpovos);
         dinamica(matriz, povos, qtdpovos, distancia, peso);
-        //heuristica(copia_p, matriz, peso, distancia, qtdpovos);
+        heuristica(copia_p, matriz, peso, distancia, qtdpovos);
         limpa_estrutura(qtdpovos, matriz, povos, copia_p);
     }
 

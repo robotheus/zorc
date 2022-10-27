@@ -1,9 +1,10 @@
-struct solucao {
+struct solu {
     int item;
-    struct solucao *next;
+    int qtd ;
+    struct solu *next;
 };
 
-typedef struct solucao Solucao;
+typedef struct solu Solucao_dp;
 
 void dinamica(int **, Povo *, int, int, int);
 int max(Povo *povo, int **tabela, int i, int j);
