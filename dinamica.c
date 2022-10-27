@@ -5,17 +5,16 @@
 #include "file.h"
 
 void dinamica(int **matriz, Povo *povo, int qtdpovos, int distancia, int peso){
-    int *tabela, aux_s, qtdsoldados = 0;
-    Solucao_dp **solucao;
-    Solucao_dp *aux;
-
-    tabela = (int *) malloc((peso + 1) * (sizeof(int)));
+	int *tabela, aux_s, qtdsoldados = 0;
+	Solucao_dp **solucao;
+	Solucao_dp *aux;
+	tabela = (int *) malloc((peso + 1) * (sizeof(int)));
 	solucao = (Solucao_dp **) malloc((peso + 1) * (sizeof(Solucao_dp *)));
 	
-    tabela[0] = 0;
+	tabela[0] = 0;
 	solucao[0] = NULL;
     
-    for(int x = 1; x <= peso; x++){
+	for(int x = 1; x <= peso; x++){
 		tabela[x] = 0;
 		solucao[x] = NULL;
 		
@@ -33,12 +32,12 @@ void dinamica(int **matriz, Povo *povo, int qtdpovos, int distancia, int peso){
 			}
 		}
 	}
-    
-    printf("\nhabilidade maxima %d.\nCaminho: ", tabela[peso]);
+	
+	printf("\nhabilidade maxima %d.\nCaminho: ", tabela[peso]);
 	aux_s = (solucao[peso]->item) + 1;
 	printf("%d ", (solucao[peso]->item) + 1);
-
-	while(solucao[peso] != NULL){	
+	
+	while(solucao[peso] != NULL){
 		qtdsoldados++;
 		
 		if(((solucao[peso]->item) + 1) != aux_s){
@@ -47,7 +46,7 @@ void dinamica(int **matriz, Povo *povo, int qtdpovos, int distancia, int peso){
 			aux_s = (solucao[peso]->item) + 1;
 			qtdsoldados = 1;
 		}
-
+		
 		solucao[peso] = solucao[peso]->next;
 	}
 	
