@@ -22,7 +22,8 @@ void monta_estrutura(int **matriz, Povo *povo, int qtdpovos, int caminhos){
     //preenche a matriz de adjacencia com uma distancia nao utilizada
     for(int m = 0; m < qtdpovos; m++){
         for(int j = 0; j < qtdpovos; j++){
-            *(*(matriz + m) + j) = -1;
+            if(m == j) *(*(matriz + m) + j) = 0;
+            else *(*(matriz + m) + j) = -1;
         }
     }
     
@@ -49,14 +50,6 @@ void limpa_estrutura(int qtdpovos, int **matriz, Povo *povos, Povo *copia_povos)
 void copia_povos(Povo *primeiro, Povo *segundo, int qtdepovos){
     for(int i = 0; i < qtdepovos; i++){
         *(primeiro + i) = *(segundo + i);
-    }
-}
-
-void copia_caminhos(int **primeiro, int **segundo, int qtdepovos){
-    for(int i = 0; i < qtdepovos; i++){
-        for(int j = 0; j < qtdepovos; j++){
-            *(*(primeiro + i) + j) = *(*(segundo + i) + j);
-        }
     }
 }
 
