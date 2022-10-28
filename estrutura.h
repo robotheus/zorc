@@ -14,4 +14,3 @@ void copia_povos(Povo *, Povo *, int);
 void copia_caminhos(int **, int **, int);
 void ordena_povos(Povo *, int);
 int tem_caminho(int **, int, int);
-int menor_povo(Povo *, int);
